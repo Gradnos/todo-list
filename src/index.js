@@ -1,2 +1,2 @@
 import './style.css';
-import { todoItemFactory } from './todoItem';
+import { todoItemFactory, projectFactory } from './todoObjects';
