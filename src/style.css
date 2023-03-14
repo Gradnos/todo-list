@@ -8,7 +8,20 @@
     --r: #FF7474;
 }
 
+@font-face {
+    font-family: 'cedric';
+    src: url('./CEDRIC\ demo.ttf') format('truetype'); 
+}
 
+@font-face {
+    font-family: 'tiltWrap';
+    src: url('./TiltWarp-Regular.ttf') format('truetype'); 
+}
+
+
+*{
+    font-family: 'tiltWrap';
+}
 
 html,
 body{
@@ -30,10 +43,28 @@ body{
 
 header{
     background-color: var(--dark);
+    padding: 2rem 2rem 1rem 2rem;
+}
 
+a{
+    text-decoration: none;
+    color: white;
+    transition-duration: 0.3s;
+    padding: 0.1rem 0.2rem;
+}
+
+a:hover{
+    color: var(--dark);
+    letter-spacing: 0.1rem;
+    background-color: #43C7FF;
 }
 
 footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--accent);
+    padding: 10px;
     background-color: var(--dark);
 }
 
@@ -46,3 +77,14 @@ footer{
     background-color: var(--mid);
     flex:7;
 }
+
+h1{
+    line-height: 3rem;
+    font-family: 'cedric';
+    font-weight: 100;
+    margin:0;
+    letter-spacing: 5px;
+    font-size: 5rem;
+    color: var(--accent);
+}
+
