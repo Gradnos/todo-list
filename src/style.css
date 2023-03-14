@@ -1,0 +1,48 @@
+:root{
+    --dark: #16205E;
+    --mid: #363E88;
+    --light: #575E9B;
+    --accent: #5C6DFF;
+    --g: #4EEFA3;
+    --b: #43C7FF;
+    --r: #FF7474;
+}
+
+
+
+html,
+body{
+    height: 100%;
+    margin: 0;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.content{
+    flex: 1;
+    display: flex;
+    width: 100%;
+}
+
+header{
+    background-color: var(--dark);
+
+}
+
+footer{
+    background-color: var(--dark);
+}
+
+.projects{
+    background-color: var(--light);
+    flex:2;
+}
+
+.todos{
+    background-color: var(--mid);
+    flex:7;
+}
