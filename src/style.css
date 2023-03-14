@@ -74,20 +74,27 @@ footer{
     flex-direction: column;
     align-items: center;
     background-color: var(--light);
-    flex:2;
+    flex:2.5;
+}
+
+svg{
+    height: 1.7rem;
+    width: auto;
 }
 
 .project-div{
     display: flex;
-    gap: 10px;
+    align-items: center;
+    height: 40px;
     background-color: var(--dark);
-    color: var(--b);
+    color: var(--w);
     padding: 10px;
     width: 80%;
     border-radius: 10px;
 }
 
 .project-div span{
+    font-size: 1.1rem;
     margin-right: auto;
 }
 
@@ -99,7 +106,7 @@ button{
 }
 
 .edit:hover{
-    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(25deg) brightness(105%) contrast(98%);
+    filter: invert(64%) sepia(98%) saturate(1347%) hue-rotate(170deg) brightness(102%) contrast(104%);
 }
 
 .delete:hover{
@@ -110,6 +117,12 @@ button{
 .todos{
     background-color: var(--mid);
     flex:7;
+}
+
+button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 h1{
