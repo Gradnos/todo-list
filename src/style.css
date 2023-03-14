@@ -6,6 +6,7 @@
     --g: #4EEFA3;
     --b: #43C7FF;
     --r: #FF7474;
+    --w: #c9d0fa;
 }
 
 @font-face {
@@ -48,7 +49,7 @@ header{
 
 a{
     text-decoration: none;
-    color: white;
+    color: var(--w);
     transition-duration: 0.3s;
     padding: 0.1rem 0.2rem;
 }
@@ -69,9 +70,42 @@ footer{
 }
 
 .projects{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: var(--light);
     flex:2;
 }
+
+.project-div{
+    display: flex;
+    gap: 10px;
+    background-color: var(--dark);
+    color: var(--b);
+    padding: 10px;
+    width: 80%;
+    border-radius: 10px;
+}
+
+.project-div span{
+    margin-right: auto;
+}
+
+button{
+    background: transparent;
+    color: black;
+    filter: invert(82%) sepia(3%) saturate(2795%) hue-rotate(196deg) brightness(102%) contrast(96%);
+    border: none;
+}
+
+.edit:hover{
+    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(25deg) brightness(105%) contrast(98%);
+}
+
+.delete:hover{
+    filter: invert(63%) sepia(72%) saturate(2597%) hue-rotate(316deg) brightness(105%) contrast(104%);
+}
+
 
 .todos{
     background-color: var(--mid);
@@ -85,6 +119,10 @@ h1{
     margin:0;
     letter-spacing: 5px;
     font-size: 5rem;
-    color: var(--accent);
+    color: var(--w);
+}
+
+h2{
+    color: var(--w);
 }
 
