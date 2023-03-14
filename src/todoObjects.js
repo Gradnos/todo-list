@@ -15,6 +15,11 @@ export const projectFactory = (title) =>{
         todoArr.push(todoItem);
     }
 
+    const createTodo = (title, description, dueDate, priority) =>{
+        let newTodoItem = todoItemFactory(title, description, dueDate, priority);
+        addTodo(newTodoItem);
+    }
+
     const removeTodo = (todoItem) =>{
         let id = getTodoId(todoItem);
         if(id === undefined) return;
@@ -29,16 +34,42 @@ export const projectFactory = (title) =>{
         title,
         todoArr,
         addTodo,
-        removeTodo
+        removeTodo,
+        createTodo
     }
 };
 
-export const User = (username) =>{
+export const userFactory = (username) =>{
     let projectArr =[];
 
     const addProject = (projectItem) =>{
         projectArr.push(projectItem);
     }
+
+    const projectWithTitle = (projectName) =>{
+        let project = projectArr.find(element =>element.title === projectName);
+        return project;
+    }
+
+
+    const createTodo = (projectTitle, todoTitle, description, dueDate, priority) =>{
+        let project = projectWithTitle(projectTitle);
+        if(project === undefined){
+            project = projectFactory(projectTitle);
+            addProject(project);
+        }
+        project.createTodo(todoTitle, description, dueDate, priority);
+    }
+
+    const addTodo = (projectTitle, todoItem) =>{
+        let project = projectWithTitle(projectTitle);
+        if(project === undefined){
+            project = projectFactory(projectTitle);
+            addProject(project);
+        }
+        project.addTodo(todoItem);
+    }
+
 
     const removeProject = (projectItem) =>{
         let id = getTodoId(projectItem);
@@ -52,8 +83,11 @@ export const User = (username) =>{
 
     return{
         username,
+        projectArr,
         addProject,
-        removeProject
+        removeProject,
+        createTodo,
+        addTodo
     };
 }
 
