@@ -79,6 +79,7 @@ footer{
     align-items: center;
     background-color: var(--light);
     flex:2.5;
+    gap:15px;
 }
 
 .project-container{
@@ -88,6 +89,7 @@ footer{
     align-items: center;
     gap : 15px;
 }
+
 
 svg{
     height: 1.7rem;
@@ -115,7 +117,9 @@ button{
     color: black;
     filter: invert(82%) sepia(3%) saturate(2795%) hue-rotate(196deg) brightness(102%) contrast(96%);
     border: none;
+    transition-duration: 0.3s;
 }
+
 
 .edit:hover{
     filter: invert(64%) sepia(98%) saturate(1347%) hue-rotate(170deg) brightness(102%) contrast(104%);
@@ -125,10 +129,17 @@ button{
     filter: invert(63%) sepia(72%) saturate(2597%) hue-rotate(316deg) brightness(105%) contrast(104%);
 }
 
+.add-button:hover{
+    filter: invert(64%) sepia(98%) saturate(1347%) hue-rotate(170deg) brightness(102%) contrast(104%);
+}
 
 .todos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: var(--mid);
     flex:7;
+    gap:15px;
 }
 
 button{
@@ -149,5 +160,6 @@ h1{
 
 h2{
     color: var(--w);
+    margin: 15px 0 0 0 ;
 }
 

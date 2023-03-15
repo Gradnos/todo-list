@@ -18,12 +18,7 @@ let user = userFactory("Guest");
 user.createProject("john")
 user.createTodo("jajaj", "as", "aa", "111", 1);
 
-
-console.log(user);
-displayProjects(user,ProjectContainer, projectTemplate);
 displayProjects(user,ProjectContainer,projectTemplate);
-displayProjects(user,ProjectContainer,projectTemplate);
-
 
 
 
