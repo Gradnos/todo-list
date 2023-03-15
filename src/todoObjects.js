@@ -44,12 +44,16 @@ export const userFactory = (username) =>{
 
     const addProject = (projectItem) =>{
         projectArr.push(projectItem);
-    }
+    };
+    
+    const createProject = (title) =>{
+        addProject(projectFactory(title));        
+    };
 
     const projectWithTitle = (projectName) =>{
         let project = projectArr.find(element =>element.title === projectName);
         return project;
-    }
+    };
 
 
     const createTodo = (projectTitle, todoTitle, description, dueDate, priority) =>{
@@ -59,7 +63,7 @@ export const userFactory = (username) =>{
             addProject(project);
         }
         project.createTodo(todoTitle, description, dueDate, priority);
-    }
+    };
 
     const addTodo = (projectTitle, todoItem) =>{
         let project = projectWithTitle(projectTitle);
@@ -68,23 +72,24 @@ export const userFactory = (username) =>{
             addProject(project);
         }
         project.addTodo(todoItem);
-    }
+    };
 
 
     const removeProject = (projectItem) =>{
         let id = getTodoId(projectItem);
         if(id === undefined) return;
         projectArr.splice(id, 1);
-    }   
+    };   
 
     const getTodoId = (projectItem) =>{
         return projectArr.findIndex(element => element.title === projectItem.title);
-    }
+    };
 
     return{
         username,
         projectArr,
         addProject,
+        createProject,
         removeProject,
         createTodo,
         addTodo
