@@ -222,6 +222,10 @@ select{
     padding: 5px 10px;
 }
 
+.title-label::after{
+    content: "*";
+}
+
 .popup button:hover{
     filter:brightness(0.8);
 }
@@ -266,6 +270,12 @@ select{
     display: flex;
     animation: fade-in 500ms forwards;
     animation: slide up 500ms forwards;
+}
+
+.error{
+    color: var(--r);
+    background-color: var(--dark);
+    padding: 0px 10px;
 }
 
 @keyframes fade-in {

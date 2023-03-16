@@ -31,3 +31,8 @@ export function hidePopup(popupElement, backdrop){
     popupElement.classList.remove("visible");
     backdrop.classList.remove("visible");
 }
+
+ 
+export function displayError(popup, errorClass, errorText){
+    popup.querySelector(errorClass).innerText=errorText;
+}

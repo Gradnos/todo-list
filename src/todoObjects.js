@@ -30,12 +30,19 @@ export const projectFactory = (title) =>{
         return todoArr.findIndex(element => element.title === todoItem.title);
     }
 
+    const getTodoIdByTitle = (title) =>{
+        return todoArr.findIndex(element => element.title === title);
+    }
+
+
     return{
         title,
         todoArr,
         addTodo,
         removeTodo,
-        createTodo
+        createTodo,
+        getTodoIdByTitle,
+
     }
 };
 
@@ -53,6 +60,11 @@ export const userFactory = (username) =>{
     const projectWithTitle = (projectName) =>{
         let project = projectArr.find(element =>element.title === projectName);
         return project;
+    };
+
+    const projectIdWithTitle = (projectName) =>{
+        let id = projectArr.findIndex(element =>element.title === projectName);
+        return id;
     };
 
 
@@ -94,6 +106,7 @@ export const userFactory = (username) =>{
         createTodo,
         addTodo,
         projectWithTitle,
+        projectIdWithTitle,
     };
 }
 

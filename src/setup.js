@@ -1,4 +1,4 @@
-import { displayPopup, hidePopup } from "./displayFunctions";
+import { displayPopup, hidePopup, displayError } from "./displayFunctions";
 import { todoItemFactory, projectFactory, userFactory } from './todoObjects';
 import { displayProjects } from './displayFunctions';
 
@@ -57,6 +57,17 @@ function setupPopupButtons(){
 
     addTodoConfirmButton.addEventListener("click", (e) =>{
         let title = addTodoPopup.querySelector(".ipt-title").value;
+
+        if(currentProject.getTodoIdByTitle(title) !== -1) {
+            displayError(addTodoPopup, ".title-error", "This Title Already Exists!");
+            return
+        }
+        if(title === "") {
+            displayError(addTodoPopup, ".title-error", "It Must Have A Title!");
+            return
+        }
+        displayError(addTodoPopup, ".title-error", "");
+
         let description = addTodoPopup.querySelector(".ipt-description").value;
         let dueDate = addTodoPopup.querySelector(".ipt-dueDate").value;
         let priority = addTodoPopup.querySelector(".ipt-priority").value;
@@ -75,8 +86,18 @@ function setupPopupButtons(){
 
     addProjectConfirmButton.addEventListener("click", (e) =>{
         let title = addProjectPopup.querySelector(".ipt-title").value;
+
+        if(CurrentUser.projectIdWithTitle(title) !== -1) {
+            displayError(addProjectPopup, ".title-error", "This Title Already Exists!");
+            return
+        }
+        if(title === "") {
+            displayError(addProjectPopup, ".title-error", "It Must Have A Title!");
+            return
+        }
+        displayError(addProjectPopup, ".title-error", "");
+
         CurrentUser.createProject(title);
-        console.log(user);
         hidePopup(addProjectPopup, backdrop);
         displayProjects(user,ProjectContainer,projectTemplate);
     });
