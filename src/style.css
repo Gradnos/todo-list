@@ -9,6 +9,12 @@
     --w: #c9d0fa;
 }
 
+::selection{
+    color: black;
+    background-color: white;
+}
+
+
 @font-face {
     font-family: 'cedric';
     src: url('./CEDRIC\ demo.ttf') format('truetype'); 
@@ -203,6 +209,16 @@ input{
     background-color: var(--w);
     border: none;
     border-radius: 10px;
+    width: 100%;
+    padding: 5px 10px;
+}
+
+select{
+    outline-color: transparent;
+    background-color: var(--w);
+    border: none;
+    border-radius: 10px;
+    width: calc(100% + 20px);
     padding: 5px 10px;
 }
 
@@ -227,6 +243,7 @@ input{
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    width: 250px;
 }
 
 .backdrop{

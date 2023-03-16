@@ -92,7 +92,8 @@ export const userFactory = (username) =>{
         createProject,
         removeProject,
         createTodo,
-        addTodo
+        addTodo,
+        projectWithTitle,
     };
 }
 

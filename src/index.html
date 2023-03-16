@@ -51,12 +51,37 @@
 
     <div class="todo-popup popup">
         <h3>add todo</h3>
+
         <div class="input-wrapper">
-            <label for=""> title</label>
+            <label for="">title</label>
             <input class="ipt-title" type="text">
             <small class="error"></small>
         </div>
         
+        <div class="input-wrapper">
+            <label for=""> description</label>
+            <input class="ipt-description" type="text">
+            <small class="error"></small>
+        </div>
+
+        <div class="input-wrapper">
+            <label for=""> DueDate</label>
+            <input class="ipt-dueDate" type="date">
+            <small class="error"></small>
+        </div>
+
+
+        <div class="input-wrapper">
+            <label for=""> Priority</label>
+            <select name="priority" class="ipt-priority">
+                <option value="1">Super Important</option>
+                <option value="2">Important</option>
+                <option value="3">Not Important</option>
+              </select>
+            <small class="error"></small>
+        </div>
+
+
         <div class="button-container">
             <button class="confirm">Confirm</button>
             <button class="cancel">Cancel</button>
