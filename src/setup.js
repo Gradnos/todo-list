@@ -73,6 +73,15 @@ function setupPopupButtons(){
         hidePopup(addProjectPopup, backdrop);
     });
 
+    addProjectConfirmButton.addEventListener("click", (e) =>{
+        let title = addProjectPopup.querySelector(".ipt-title").value;
+        CurrentUser.createProject(title);
+        console.log(user);
+        hidePopup(addProjectPopup, backdrop);
+        displayProjects(user,ProjectContainer,projectTemplate);
+    });
+
+
 }
 
 
