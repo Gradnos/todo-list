@@ -1,7 +1,7 @@
 import './style.css';
 import { todoItemFactory, projectFactory, userFactory } from './todoObjects';
 import { displayProjects } from './displayFunctions';
-
+import { setup } from './setup';
 import Icon from "./icons/favicon.svg";
 
 let link = document.createElement('link');
@@ -12,11 +12,14 @@ document.head.appendChild(link);
 let ProjectContainer = document.querySelector(".project-container");
 let projectTemplate = document.querySelector(".project-template");
 
+setup();
+
+console.log("asdasd");
 
 
 let user = userFactory("Guest");
-user.createProject("john")
-user.createTodo("jajaj", "as", "aa", "111", 1);
+user.createProject("Get A Wife")
+user.createTodo("Get A Job", "as", "aa", "111", 1);
 
 displayProjects(user,ProjectContainer,projectTemplate);
 

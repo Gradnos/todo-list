@@ -9,3 +9,13 @@ export function displayProjects(user, ProjectContainer, projectTemplate){
         ProjectContainer.appendChild(projectClone);
     });
 }
+
+export function displayPopup(popupElement, backdrop){
+    popupElement.classList.add("visible");
+    backdrop.classList.add("visible");
+}
+
+export function hidePopup(popupElement, backdrop){
+    popupElement.classList.remove("visible");
+    backdrop.classList.remove("visible");
+}
