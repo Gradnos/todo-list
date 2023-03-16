@@ -14,7 +14,6 @@ let projectTemplate = document.querySelector(".project-template");
 
 setup();
 
-console.log("asdasd");
 
 
 let user = userFactory("Guest");
