@@ -9,13 +9,15 @@ export function displayProjects(user, ProjectContainer, projectTemplate){
     });
 }
 
-export function displayTodos(project, TodoContainer, todoTemplate){
+export function displayTodos(project, todoContainer, todoTemplate){
     let todoArr = project.todoArr;
-    TodoContainer.innerHTML = "";
+    todoContainer.innerHTML = "";
     todoArr.forEach(todo => {
         let todoClone = todoTemplate.cloneNode(true);
         todoClone.classList.remove("nodisplay", "todo-template")
         todoClone.querySelector(".todo-title").innerText = todo.title;
+        todoClone.querySelector(".todo-description").innerText = todo.description;
+        todoClone.querySelector(".todo-dueDate").innerText = todo.dueDate;
         todoContainer.appendChild(todoClone);
     });
 }

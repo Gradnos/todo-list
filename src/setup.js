@@ -1,12 +1,16 @@
-import { displayPopup, hidePopup, displayError } from "./displayFunctions";
+import { displayPopup, hidePopup, displayError, displayTodos } from "./displayFunctions";
 import { todoItemFactory, projectFactory, userFactory } from './todoObjects';
 import { displayProjects } from './displayFunctions';
 
 
 let backdrop = document.querySelector(".backdrop");
 
-let ProjectContainer = document.querySelector(".project-container");
+let projectContainer = document.querySelector(".project-container");
 let projectTemplate = document.querySelector(".project-template");
+
+
+let todoContainer = document.querySelector(".todo-container");
+let todoTemplate = document.querySelector(".todo-template");
 
 
 let addProjectButton = document.querySelector(".add-project");
@@ -32,7 +36,7 @@ export function setup(){
     setupPopupButtons();
 
 
-    displayProjects(user,ProjectContainer,projectTemplate);
+    displayProjects(user,projectContainer,projectTemplate);
 }
 
 
@@ -71,9 +75,10 @@ function setupPopupButtons(){
         let description = addTodoPopup.querySelector(".ipt-description").value;
         let dueDate = addTodoPopup.querySelector(".ipt-dueDate").value;
         let priority = addTodoPopup.querySelector(".ipt-priority").value;
-        currentProject.createTodo(title,description,dueDate,priority);
-        console.log(user);
+    
+        currentProject.createTodo(title,description,dueDate,priority, false);
         hidePopup(addTodoPopup, backdrop);
+        displayTodos(currentProject, todoContainer, todoTemplate);
     });
 
 
@@ -99,7 +104,7 @@ function setupPopupButtons(){
 
         CurrentUser.createProject(title);
         hidePopup(addProjectPopup, backdrop);
-        displayProjects(user,ProjectContainer,projectTemplate);
+        displayProjects(user,projectContainer,projectTemplate);
     });
 
 
