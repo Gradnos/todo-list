@@ -1,9 +1,10 @@
-export const todoItemFactory = (title, description, dueDate, priority) =>{
+export const todoItemFactory = (title, description, dueDate, priority, completed) =>{
     return{
         title,
         description,
         dueDate,
-        priority
+        priority,
+        completed
     }
 };
 
@@ -15,7 +16,7 @@ export const projectFactory = (title) =>{
         todoArr.push(todoItem);
     }
 
-    const createTodo = (title, description, dueDate, priority) =>{
+    const createTodo = (title, description, dueDate, priority, completed) =>{
         let newTodoItem = todoItemFactory(title, description, dueDate, priority);
         addTodo(newTodoItem);
     }
@@ -68,13 +69,13 @@ export const userFactory = (username) =>{
     };
 
 
-    const createTodo = (projectTitle, todoTitle, description, dueDate, priority) =>{
+    const createTodo = (projectTitle, todoTitle, description, dueDate, priority, completed) =>{
         let project = projectWithTitle(projectTitle);
         if(project === undefined){
             project = projectFactory(projectTitle);
             addProject(project);
         }
-        project.createTodo(todoTitle, description, dueDate, priority);
+        project.createTodo(todoTitle, description, dueDate, priority, completed);
     };
 
     const addTodo = (projectTitle, todoItem) =>{
