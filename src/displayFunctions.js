@@ -1,3 +1,5 @@
+import { currentProject, CurrentUser } from "./setup";
+
 export function displayProjects(user, ProjectContainer, projectTemplate){
     let projectArr = user.projectArr;
     ProjectContainer.innerHTML = "";
@@ -5,6 +7,17 @@ export function displayProjects(user, ProjectContainer, projectTemplate){
         let projectClone = projectTemplate.cloneNode(true);
         projectClone.classList.remove("nodisplay", "project-template")
         projectClone.querySelector(".project-title").innerText = project.title;
+
+        let deleteButton = projectClone.querySelector(".delete");
+
+        deleteButton.addEventListener("click", (e) =>{
+            CurrentUser.removeProjectByTitle(project.title);
+            displayProjects(user, ProjectContainer, projectTemplate);
+
+            console.log(project);
+        });
+
+
         ProjectContainer.appendChild(projectClone);
     });
 }
@@ -18,6 +31,17 @@ export function displayTodos(project, todoContainer, todoTemplate){
         todoClone.querySelector(".todo-title").innerText = todo.title;
         todoClone.querySelector(".todo-description").innerText = todo.description;
         todoClone.querySelector(".todo-dueDate").innerText = todo.dueDate;
+
+        let deleteButton = todoClone.querySelector(".delete");
+
+        deleteButton.addEventListener("click", (e) =>{
+            currentProject.removeTodoByTitle(todo.title);
+            displayTodos(project, todoContainer, todoTemplate);
+
+            console.log(project);
+        });
+
+
         todoContainer.appendChild(todoClone);
     });
 }

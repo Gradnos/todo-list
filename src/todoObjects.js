@@ -5,7 +5,7 @@ export const todoItemFactory = (title, description, dueDate, priority, completed
         dueDate,
         priority,
         completed
-    }
+    };
 };
 
 
@@ -14,26 +14,32 @@ export const projectFactory = (title) =>{
 
     const addTodo = (todoItem) =>{
         todoArr.push(todoItem);
-    }
+    };
 
     const createTodo = (title, description, dueDate, priority, completed) =>{
         let newTodoItem = todoItemFactory(title, description, dueDate, priority);
         addTodo(newTodoItem);
-    }
+    };
 
     const removeTodo = (todoItem) =>{
         let id = getTodoId(todoItem);
         if(id === undefined) return;
         todoArr.splice(id, 1);
-    }   
+    };   
+
+    const removeTodoByTitle = (title) =>{
+        let todo = todoArr.find(element => element.title === title);
+        if(todo === undefined) return;
+        removeTodo(todo);
+    };
 
     const getTodoId = (todoItem) =>{
         return todoArr.findIndex(element => element.title === todoItem.title);
-    }
+    };
 
     const getTodoIdByTitle = (title) =>{
         return todoArr.findIndex(element => element.title === title);
-    }
+    };
 
 
     return{
@@ -43,8 +49,8 @@ export const projectFactory = (title) =>{
         removeTodo,
         createTodo,
         getTodoIdByTitle,
-
-    }
+        removeTodoByTitle,
+    };
 };
 
 export const userFactory = (username) =>{
@@ -94,6 +100,12 @@ export const userFactory = (username) =>{
         projectArr.splice(id, 1);
     };   
 
+    const removeProjectByTitle = (title) =>{
+        let project = projectArr.find(project => project.title === title);
+        if(project === undefined) return;
+        removeProject(project);
+    }
+
     const getTodoId = (projectItem) =>{
         return projectArr.findIndex(element => element.title === projectItem.title);
     };
@@ -108,6 +120,7 @@ export const userFactory = (username) =>{
         addTodo,
         projectWithTitle,
         projectIdWithTitle,
+        removeProjectByTitle
     };
 }
 
