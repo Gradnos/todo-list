@@ -25,6 +25,13 @@ user.createProject("Get A Wife");
 
 export let CurrentUser = user;
 export let currentProject = CurrentUser.projectWithTitle("Get A Wife");
+export function setCurrentUser(user){
+    CurrentUser = user;
+};
+export function setCurrentProject(project){
+    currentProject = project;
+};
+
 
 
 user.createTodo("Get A Job", "as", "aa", "111", 1);

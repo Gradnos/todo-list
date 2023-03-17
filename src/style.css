@@ -120,6 +120,13 @@
         padding: 10px;
         width: 80%;
         border-radius: 10px;
+        transition-property: border scale;
+        transition-duration: 0.3s;
+    }
+
+    .project-div:hover{
+        width: 82%;
+        background-color: rgb(28, 40, 146);
     }
 
 

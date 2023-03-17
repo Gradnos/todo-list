@@ -1,4 +1,12 @@
-import { currentProject, CurrentUser } from "./setup";
+import { currentProject, CurrentUser, setCurrentProject, setCurrentUser } from "./setup";
+
+let projectContainer = document.querySelector(".project-container");
+let projectTemplate = document.querySelector(".project-template");
+
+let todoContainer = document.querySelector(".todo-container");
+let todoTemplate = document.querySelector(".todo-template");
+
+
 
 export function displayProjects(user, ProjectContainer, projectTemplate){
     let projectArr = user.projectArr;
@@ -15,6 +23,12 @@ export function displayProjects(user, ProjectContainer, projectTemplate){
             displayProjects(user, ProjectContainer, projectTemplate);
 
             console.log(project);
+        });
+
+        projectClone.addEventListener("click", (e) =>{
+            console.log(project);
+            setCurrentProject(project);
+            displayTodos(project, todoContainer, todoTemplate);      
         });
 
 
@@ -57,6 +71,9 @@ export function hidePopup(popupElement, backdrop){
     popupElement.classList.remove("visible");
     backdrop.classList.remove("visible");
 }
+
+
+
 
  
 export function displayError(popup, errorClass, errorText){
