@@ -1,4 +1,4 @@
-import { displayPopup, hidePopup, displayError, displayTodos } from "./displayFunctions";
+import { displayPopup, hidePopup, displayError, displayTodos, SelectedProjectChangeStyle } from "./displayFunctions";
 import { todoItemFactory, projectFactory, userFactory } from './todoObjects';
 import { displayProjects } from './displayFunctions';
 
@@ -23,27 +23,32 @@ let user = userFactory("Guest");
 user.createProject("Get A Wife");
 
 
-export let CurrentUser = user;
-export let currentProject = CurrentUser.projectWithTitle("Get A Wife");
+export let CurrentUser;
+export let currentProject;
 export function setCurrentUser(user){
     CurrentUser = user;
 };
 export function setCurrentProject(project){
     currentProject = project;
+    displayProjects(CurrentUser,projectContainer,projectTemplate);
+    displayTodos(currentProject,todoContainer,todoTemplate);
+    SelectedProjectChangeStyle(currentProject);
 };
 
 
 
-user.createTodo("Get A Job", "as", "aa", "111", 1);
 
+
+user.createTodo("Get A Job", "Learn A Skill", "Web-Development", "01-01-2024", 1);
+user.createTodo("Get A Wife", "Find A Woman", "Usually In The Streets", "11-12-2024", 1);
 
 
 export function setup(){
     setupAddButtons();
     setupPopupButtons();
 
-
-    displayProjects(user,projectContainer,projectTemplate);
+    setCurrentUser(user);
+    setCurrentProject(CurrentUser.projectWithTitle("Get A Wife"));
 }
 
 

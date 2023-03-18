@@ -20,18 +20,26 @@ export function displayProjects(user, ProjectContainer, projectTemplate){
 
         deleteButton.addEventListener("click", (e) =>{
             CurrentUser.removeProjectByTitle(project.title);
+            if(currentProject.title === project.title) setCurrentProject(user.projectArr[0]);
             displayProjects(user, ProjectContainer, projectTemplate);
+            SelectedProjectChangeStyle(currentProject);
+            e.stopPropagation();
+        });
 
-            console.log(project);
+        let editButton = projectClone.querySelector(".edit");
+
+        editButton.addEventListener("click", (e) =>{
+            displayProjects(user, ProjectContainer, projectTemplate);
+            SelectedProjectChangeStyle(currentProject);
+            e.stopPropagation();
         });
 
         projectClone.addEventListener("click", (e) =>{
-            console.log(project);
             setCurrentProject(project);
-            displayTodos(project, todoContainer, todoTemplate);      
         });
 
 
+        SelectedProjectChangeStyle(currentProject);
         ProjectContainer.appendChild(projectClone);
     });
 }
@@ -59,6 +67,23 @@ export function displayTodos(project, todoContainer, todoTemplate){
         todoContainer.appendChild(todoClone);
     });
 }
+
+export function SelectedProjectChangeStyle(project){
+    let title = project.title;
+    let projectElements =  projectContainer.querySelectorAll(".project-div");
+    projectElements.forEach(projectElement => {
+        let titleElement = projectElement.querySelector(".project-title");
+        let projectElementTitle = null;
+        if(titleElement !== null) projectElementTitle = titleElement.innerText;
+
+        if(projectElementTitle === title){
+            projectElement.classList.add("selected");
+        } else{
+            projectElement.classList.remove("selected");
+        }
+    });
+}
+
 
 
 
