@@ -49,10 +49,14 @@ export function displayTodos(project, todoContainer, todoTemplate){
     todoContainer.innerHTML = "";
     todoArr.forEach(todo => {
         let todoClone = todoTemplate.cloneNode(true);
+        let todoCheckbox = todoClone.querySelector(".todo-completed");
+
         todoClone.classList.remove("nodisplay", "todo-template")
         todoClone.querySelector(".todo-title").innerText = todo.title;
         todoClone.querySelector(".todo-description").innerText = todo.description;
         todoClone.querySelector(".todo-dueDate").innerText = todo.dueDate;
+        todoCheckbox.checked = todo.completed;
+        
 
         let deleteButton = todoClone.querySelector(".delete");
 
@@ -61,6 +65,12 @@ export function displayTodos(project, todoContainer, todoTemplate){
             displayTodos(project, todoContainer, todoTemplate);
 
             console.log(project);
+        });
+
+        todoCheckbox.addEventListener("click", (e) =>{
+            todo.completed = !todo.completed;
+            console.log(currentProject);
+            e.stopPropagation();
         });
 
 
