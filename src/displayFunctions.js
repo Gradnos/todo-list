@@ -69,10 +69,14 @@ export function displayTodos(project, todoContainer, todoTemplate){
 
         todoCheckbox.addEventListener("click", (e) =>{
             todo.completed = !todo.completed;
-            console.log(currentProject);
+            if(todo.completed) todoClone.classList.add("completed");
+            else todoClone.classList.remove("completed");
             e.stopPropagation();
         });
 
+
+        if(todo.completed) todoClone.classList.add("completed");
+        else todoClone.classList.remove("completed");
 
         todoContainer.appendChild(todoClone);
     });

@@ -158,6 +158,10 @@
         border-radius: 10px;
     }
 
+    .todo-div.completed{
+        filter: brightness(0.5);
+    }
+
     .todo-div *{
         color: rgba(0, 0, 0, 0.5);
     }
