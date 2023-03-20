@@ -14,12 +14,16 @@ export const projectFactory = (title) =>{
 
     const addTodo = (todoItem) =>{
         todoArr.push(todoItem);
-
+        sortTodos();
     };
 
     const sortTodos = ()=>{
-
+        todoArr.sort(sortFn);
     };
+
+    const sortFn = (a,b) =>{
+        if(a.priority < b.priority) return -1;
+    }
 
     const createTodo = (title, description, dueDate, priority, completed) =>{
         let newTodoItem = todoItemFactory(title, description, dueDate, priority);
