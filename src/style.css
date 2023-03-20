@@ -151,11 +151,23 @@
         align-items: center;
         justify-content: space-between;
         height: 80px;
-        background-color: var(--r);
+        background-color: white;
         color: var(--w);
         padding: 10px;
         width: 90%;
         border-radius: 10px;
+    }
+
+    .todo-div.--r{
+        background-color: var(--r);
+    }
+
+    .todo-div.--g{
+        background-color: var(--g);
+    }
+
+    .todo-div.--b{
+        background-color: var(--b);
     }
 
     .todo-div.completed{

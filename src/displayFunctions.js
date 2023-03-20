@@ -45,18 +45,25 @@ export function displayProjects(user, ProjectContainer, projectTemplate){
 }
 
 export function displayTodos(project, todoContainer, todoTemplate){
+
+    let priorityColors = ["--r", "--b", "--g"];
+
+
     let todoArr = project.todoArr;
     todoContainer.innerHTML = "";
     todoArr.forEach(todo => {
         let todoClone = todoTemplate.cloneNode(true);
         let todoCheckbox = todoClone.querySelector(".todo-completed");
 
+
         todoClone.classList.remove("nodisplay", "todo-template")
         todoClone.querySelector(".todo-title").innerText = todo.title;
         todoClone.querySelector(".todo-description").innerText = todo.description;
         todoClone.querySelector(".todo-dueDate").innerText = todo.dueDate;
         todoCheckbox.checked = todo.completed;
-        
+
+    
+        todoClone.classList.add(priorityColors[todo.priority]);
 
         let deleteButton = todoClone.querySelector(".delete");
 

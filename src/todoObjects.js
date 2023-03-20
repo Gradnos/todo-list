@@ -14,6 +14,11 @@ export const projectFactory = (title) =>{
 
     const addTodo = (todoItem) =>{
         todoArr.push(todoItem);
+
+    };
+
+    const sortTodos = ()=>{
+
     };
 
     const createTodo = (title, description, dueDate, priority, completed) =>{
