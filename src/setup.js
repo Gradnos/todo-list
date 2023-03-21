@@ -3,7 +3,7 @@ import { todoItemFactory, projectFactory, userFactory } from './todoObjects';
 import { displayProjects } from './displayFunctions';
 
 
-let backdrop = document.querySelector(".backdrop");
+export let backdrop = document.querySelector(".backdrop");
 
 let projectContainer = document.querySelector(".project-container");
 let projectTemplate = document.querySelector(".project-template");
@@ -18,6 +18,9 @@ let addProjectPopup = document.querySelector(".project-popup");
 
 let addTodoButton = document.querySelector(".add-todo");
 let addTodoPopup = document.querySelector(".todo-popup");
+
+let editProjectPopup = document.querySelector(".edit-project-popup");
+let editTodoPopup = document.querySelector(".edit-todo-popup");
 
 let user = userFactory("Guest");
 user.createProject("Get A Wife");
@@ -39,16 +42,18 @@ export function setCurrentProject(project){
 
 
 
-user.createTodo("Get A Job", "Learn A Skill", "Web-Development", "01-01-2024", 1);
-user.createTodo("Get A Wife", "Find A Woman", "Usually In The Streets", "11-12-2024", 1);
-
+user.createTodo("Get A Job", "Learn A Skill", "Web-Development", "01-01-2024", 0);
+user.createTodo("Get A Job", "Apply For Jobs", "", "01-04-2024", 1);
+user.createTodo("Get A Wife", "Find A Woman", "Usually In The Streets", "05-07-2023", 0);
+user.createTodo("Get A Wife", "Talk To A Woman", "Use Your Mouth", "11-12-2024", 1);
+user.createTodo("Get A Wife", "Finish This List", "", "", 2);
 
 export function setup(){
     setupAddButtons();
     setupPopupButtons();
 
     setCurrentUser(user);
-    setCurrentProject(CurrentUser.projectWithTitle("Get A Wife"));
+    setCurrentProject(CurrentUser.projectWithTitle("Get A Job"));
 }
 
 
@@ -118,6 +123,33 @@ function setupPopupButtons(){
         hidePopup(addProjectPopup, backdrop);
         displayProjects(user,projectContainer,projectTemplate);
     });
+
+    let editProjectConfirmButton = editProjectPopup.querySelector(".confirm");
+    let editProjectCancelButton = editProjectPopup.querySelector(".cancel");
+
+    editProjectCancelButton.addEventListener("click", (e) =>{
+        hidePopup(editProjectPopup, backdrop);
+    });
+
+    editProjectConfirmButton.addEventListener("click", (e) =>{
+        let title = editProjectPopup.querySelector(".ipt-title").value;
+
+        if(CurrentUser.projectIdWithTitle(title) !== -1) {
+            displayError(editProjectPopup, ".title-error", "This Title Already Exists!");
+            return
+        }
+        if(title === "") {
+            displayError(editProjectPopup, ".title-error", "It Must Have A Title!");
+            return
+        }
+        displayError(editProjectPopup, ".title-error", "");
+
+        
+        CurrentUser.projectWithTitle(editProjectPopup.dataset.title).title = title;
+        hidePopup(editProjectPopup, backdrop);
+        displayProjects(user,projectContainer,projectTemplate);
+    });
+    
 
 
 }

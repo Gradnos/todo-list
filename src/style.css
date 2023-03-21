@@ -225,6 +225,10 @@
         filter: invert(63%) sepia(72%) saturate(2597%) hue-rotate(316deg) brightness(105%) contrast(104%)  drop-shadow(0 0 0.3rem black);
     }
 
+    .add-button{
+        margin-bottom: 15px;
+    }
+
     .add-button:hover{
         filter: drop-shadow(0 0 0.75rem red);
         filter: invert(64%) sepia(98%) saturate(1347%) hue-rotate(170deg) brightness(102%) contrast(104%) drop-shadow(0 0 0.3rem black);
@@ -235,7 +239,7 @@
         flex-direction: column;
         align-items: center;
         background-color: var(--mid);
-        flex:7;
+        flex:6;
         gap:15px;
     }
 

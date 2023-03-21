@@ -46,6 +46,10 @@
         <div>Made By <a href="https://github.com/Gradnos" target="_blank">GRADNOS</a> For <a href="https://www.theodinproject.com/" target="_blank">TheOdinProject</a></div>
     </footer>
 
+
+
+
+
     <div class="project-popup popup">
         <h3>add Project</h3>
         <div class="input-wrapper">
@@ -59,6 +63,26 @@
             <button class="cancel">Cancel</button>
         </div>
     </div>
+
+
+    <div class="edit-project-popup popup">
+        <h3>Edit Project</h3>
+        <div class="input-wrapper">
+            <label for="" class="title-label"> title</label>
+            <input class="ipt-title" type="text" maxlength="30">
+            <small class="title-error error"></small>
+        </div>
+        
+        <div class="button-container">
+            <button class="confirm">Confirm</button>
+            <button class="cancel">Cancel</button>
+        </div>
+    </div>
+
+
+
+
+
 
     <div class="todo-popup popup">
         <h3>add todo</h3>
@@ -98,6 +122,50 @@
             <button class="cancel">Cancel</button>
         </div>
     </div>
+    
+
+
+    <div class="edit-todo-popup popup">
+        <h3>edit todo</h3>
+
+        <div class="input-wrapper">
+            <label for="" class="title-label">title</label>
+            <input class="ipt-title" type="text"  maxlength="30">
+            <small class="title-error error"></small>
+        </div>
+        
+        <div class="input-wrapper">
+            <label for=""> description</label>
+            <input class="ipt-description" type="text">
+            <small class="error"></small>
+        </div>
+
+        <div class="input-wrapper">
+            <label for=""> DueDate</label>
+            <input class="ipt-dueDate" type="date">
+            <small class="error"></small>
+        </div>
+
+
+        <div class="input-wrapper">
+            <label for=""> Priority</label>
+            <select name="priority" class="ipt-priority">
+                <option value="0">Super Important</option>
+                <option value="1">Important</option>
+                <option value="2">Not Important</option>
+              </select>
+            <small class="error"></small>
+        </div>
+
+
+        <div class="button-container">
+            <button class="confirm">Confirm</button>
+            <button class="cancel">Cancel</button>
+        </div>
+    </div>
+
+
+
 
     <div class="backdrop"></div>
 </body>

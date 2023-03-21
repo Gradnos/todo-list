@@ -1,12 +1,11 @@
-import { currentProject, CurrentUser, setCurrentProject, setCurrentUser } from "./setup";
+import { currentProject, CurrentUser, setCurrentProject, setCurrentUser, backdrop } from "./setup";
 
 let projectContainer = document.querySelector(".project-container");
 let projectTemplate = document.querySelector(".project-template");
 
-let todoContainer = document.querySelector(".todo-container");
-let todoTemplate = document.querySelector(".todo-template");
 
-
+let editProjectPopup = document.querySelector(".edit-project-popup");
+let editTodoPopup = document.querySelector(".edit-todo-popup");
 
 export function displayProjects(user, ProjectContainer, projectTemplate){
     let projectArr = user.projectArr;
@@ -29,6 +28,10 @@ export function displayProjects(user, ProjectContainer, projectTemplate){
         let editButton = projectClone.querySelector(".edit");
 
         editButton.addEventListener("click", (e) =>{
+            editProjectPopup.querySelector(".ipt-title").placeholder = project.title;
+            displayPopup(editProjectPopup,backdrop);
+            editProjectPopup.dataset.title = project.title;
+
             displayProjects(user, ProjectContainer, projectTemplate);
             SelectedProjectChangeStyle(currentProject);
             e.stopPropagation();
@@ -38,10 +41,10 @@ export function displayProjects(user, ProjectContainer, projectTemplate){
             setCurrentProject(project);
         });
 
-
-        SelectedProjectChangeStyle(currentProject);
         ProjectContainer.appendChild(projectClone);
     });
+
+    SelectedProjectChangeStyle(currentProject);
 }
 
 export function displayTodos(project, todoContainer, todoTemplate){
