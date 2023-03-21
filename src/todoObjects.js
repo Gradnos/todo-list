@@ -50,7 +50,9 @@ export const projectFactory = (title) =>{
         return todoArr.findIndex(element => element.title === title);
     };
 
-
+    const todoWithTitle = (title) =>{
+        return todoArr.find(element => element.title === title);
+    }
 
     return{
         title,
@@ -60,6 +62,8 @@ export const projectFactory = (title) =>{
         createTodo,
         getTodoIdByTitle,
         removeTodoByTitle,
+        todoWithTitle,
+        sortTodos,
     };
 };
 

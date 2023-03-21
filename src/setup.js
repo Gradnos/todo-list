@@ -42,10 +42,10 @@ export function setCurrentProject(project){
 
 
 
-user.createTodo("Get A Job", "Learn A Skill", "Web-Development", "01-01-2024", 0);
-user.createTodo("Get A Job", "Apply For Jobs", "", "01-04-2024", 1);
-user.createTodo("Get A Wife", "Find A Woman", "Usually In The Streets", "05-07-2023", 0);
-user.createTodo("Get A Wife", "Talk To A Woman", "Use Your Mouth", "11-12-2024", 1);
+user.createTodo("Get A Job", "Learn A Skill", "Web-Development", "2024-01-01", 0);
+user.createTodo("Get A Job", "Apply For Jobs", "", "2024-04-01", 1);
+user.createTodo("Get A Wife", "Find A Woman", "Usually In The Streets", "2023-07-05", 0);
+user.createTodo("Get A Wife", "Talk To A Woman", "Use Your Mouth", "2024-12-11", 1);
 user.createTodo("Get A Wife", "Finish This List", "", "", 2);
 
 export function setup(){
@@ -148,6 +148,51 @@ function setupPopupButtons(){
         CurrentUser.projectWithTitle(editProjectPopup.dataset.title).title = title;
         hidePopup(editProjectPopup, backdrop);
         displayProjects(user,projectContainer,projectTemplate);
+    });
+
+
+    let editTodoConfirmButton = editTodoPopup.querySelector(".confirm");
+    let editTodoCancelButton = editTodoPopup.querySelector(".cancel");
+
+    editTodoCancelButton.addEventListener("click", (e) =>{
+        hidePopup(editTodoPopup, backdrop);
+    });
+
+    editTodoConfirmButton.addEventListener("click", (e) =>{
+        let title = editTodoPopup.querySelector(".ipt-title").value;
+        let description = editTodoPopup.querySelector(".ipt-description").value;
+        let dueDate = editTodoPopup.querySelector(".ipt-dueDate").value;
+        let priority = editTodoPopup.querySelector(".ipt-priority").value;
+
+
+        if(currentProject.getTodoIdByTitle(title) !== -1) {
+            if(title !== editTodoPopup.dataset.title){
+            displayError(editTodoPopup, ".title-error", "This Title Already Exists!");
+            return;
+            }
+        }
+        if(title === "") {
+            displayError(editTodoPopup, ".title-error", "It Must Have A Title!");
+            return;
+        }
+        displayError(editTodoPopup, ".title-error", "");
+
+        console.log(editTodoPopup.dataset.title);
+        console.log(currentProject.todoWithTitle(editTodoPopup.dataset.title));
+
+        let editedTodo = currentProject.todoWithTitle(editTodoPopup.dataset.title);
+
+        editedTodo.title = title;
+        editedTodo.description = description;
+        editedTodo.dueDate = dueDate;
+
+
+        editedTodo.priority = priority;
+
+        hidePopup(editTodoPopup, backdrop);
+
+        currentProject.sortTodos();
+        displayTodos(currentProject,todoContainer,todoTemplate);
     });
     
 

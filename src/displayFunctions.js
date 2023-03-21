@@ -28,12 +28,13 @@ export function displayProjects(user, ProjectContainer, projectTemplate){
         let editButton = projectClone.querySelector(".edit");
 
         editButton.addEventListener("click", (e) =>{
+            editProjectPopup.querySelector(".ipt-title").value = project.title;
             editProjectPopup.querySelector(".ipt-title").placeholder = project.title;
+
+
             displayPopup(editProjectPopup,backdrop);
             editProjectPopup.dataset.title = project.title;
 
-            displayProjects(user, ProjectContainer, projectTemplate);
-            SelectedProjectChangeStyle(currentProject);
             e.stopPropagation();
         });
 
@@ -75,6 +76,23 @@ export function displayTodos(project, todoContainer, todoTemplate){
             displayTodos(project, todoContainer, todoTemplate);
 
             console.log(project);
+        });
+
+        let editButton = todoClone.querySelector(".edit");
+
+        editButton.addEventListener("click", (e) =>{
+            editTodoPopup.querySelector(".ipt-title").value = todo.title;
+            editTodoPopup.querySelector(".ipt-title").placeholder = todo.title;
+
+            editTodoPopup.querySelector(".ipt-description").value = todo.description;
+            editTodoPopup.querySelector(".ipt-dueDate").value = todo.dueDate;
+            editTodoPopup.querySelector(".ipt-priority").value = todo.priority; 
+
+            
+            displayPopup(editTodoPopup,backdrop);
+            editTodoPopup.dataset.title = todo.title;
+
+            e.stopPropagation();
         });
 
         todoCheckbox.addEventListener("click", (e) =>{
