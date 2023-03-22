@@ -20,9 +20,16 @@ export function displayProjects(user, ProjectContainer, projectTemplate){
         deleteButton.addEventListener("click", (e) =>{
             CurrentUser.removeProjectByTitle(project.title);
             if(currentProject.title === project.title) setCurrentProject(user.projectArr[0]);
+
+
+
+            console.log(JSON.stringify(CurrentUser));
+            localStorage.setItem('USER', JSON.stringify(CurrentUser));
             displayProjects(user, ProjectContainer, projectTemplate);
             SelectedProjectChangeStyle(currentProject);
             e.stopPropagation();
+
+
         });
 
         let editButton = projectClone.querySelector(".edit");
@@ -73,6 +80,7 @@ export function displayTodos(project, todoContainer, todoTemplate){
 
         deleteButton.addEventListener("click", (e) =>{
             currentProject.removeTodoByTitle(todo.title);
+            localStorage.setItem('USER', JSON.stringify(CurrentUser));
             displayTodos(project, todoContainer, todoTemplate);
 
             console.log(project);

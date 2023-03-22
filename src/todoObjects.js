@@ -1,3 +1,4 @@
+
 export const todoItemFactory = (title, description, dueDate, priority, completed) =>{
     return{
         title,
@@ -19,6 +20,7 @@ export const projectFactory = (title) =>{
 
     const sortTodos = ()=>{
         todoArr.sort(sortFn);
+        
     };
 
     const sortFn = (a,b) =>{
@@ -26,7 +28,8 @@ export const projectFactory = (title) =>{
     }
 
     const createTodo = (title, description, dueDate, priority, completed) =>{
-        let newTodoItem = todoItemFactory(title, description, dueDate, priority);
+        if(completed === null || completed === undefined) completed = false;
+        let newTodoItem = todoItemFactory(title, description, dueDate, priority, completed);
         addTodo(newTodoItem);
     };
 

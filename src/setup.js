@@ -22,8 +22,6 @@ let addTodoPopup = document.querySelector(".todo-popup");
 let editProjectPopup = document.querySelector(".edit-project-popup");
 let editTodoPopup = document.querySelector(".edit-todo-popup");
 
-let user = userFactory("Guest");
-user.createProject("Get A Wife");
 
 
 export let CurrentUser;
@@ -39,20 +37,55 @@ export function setCurrentProject(project){
 };
 
 
+let retrievedUser = localStorage.getItem('USER');
+let userJson = JSON.parse(retrievedUser);
+console.log('USER: ', );
+let user
+
+if(userJson === null){
+    user = userFactory("Guest");
+    user.createTodo("Get A Job", "Learn A Skill", "Web-Development", "2024-01-01", 0);
+    user.createTodo("Get A Job", "Apply For Jobs", "", "2024-04-01", 1);
+    user.createTodo("Get A Wife", "Find A Woman", "Usually In The Streets", "2023-07-05", 0);
+    user.createTodo("Get A Wife", "Talk To A Woman", "Use Words", "2024-12-11", 1);
+    user.createTodo("Get A Wife", "Finish This List", "", "", 2);
+}else {
+    
+    user = userFactory(userJson.username);
+    let projectArr = userJson.projectArr;
+    projectArr.forEach(project => {
+        let newProject = projectFactory(project.title);
+        user.addProject(newProject);
+        let todoArr = project.todoArr;
+        todoArr.forEach(todo =>{
+            newProject.createTodo(todo.title, todo.description, todo.dueDate, todo.priority, todo.completed);
+        });
+    });
+}
 
 
 
-user.createTodo("Get A Job", "Learn A Skill", "Web-Development", "2024-01-01", 0);
-user.createTodo("Get A Job", "Apply For Jobs", "", "2024-04-01", 1);
-user.createTodo("Get A Wife", "Find A Woman", "Usually In The Streets", "2023-07-05", 0);
-user.createTodo("Get A Wife", "Talk To A Woman", "Use Your Mouth", "2024-12-11", 1);
-user.createTodo("Get A Wife", "Finish This List", "", "", 2);
+console.log(user);
+
+
+console.log(JSON.parse(JSON.stringify(user)));
+
+setCurrentUser(user);
+
+
+
+
+
+
+
+
+
+
 
 export function setup(){
     setupAddButtons();
     setupPopupButtons();
 
-    setCurrentUser(user);
     setCurrentProject(CurrentUser.projectWithTitle("Get A Job"));
 }
 
@@ -94,6 +127,7 @@ function setupPopupButtons(){
         let priority = addTodoPopup.querySelector(".ipt-priority").value;
     
         currentProject.createTodo(title,description,dueDate,priority, false);
+        localStorage.setItem('USER', JSON.stringify(CurrentUser));
         hidePopup(addTodoPopup, backdrop);
         displayTodos(currentProject, todoContainer, todoTemplate);
     });
@@ -120,6 +154,7 @@ function setupPopupButtons(){
         displayError(addProjectPopup, ".title-error", "");
 
         CurrentUser.createProject(title);
+        localStorage.setItem('USER', JSON.stringify(CurrentUser));
         hidePopup(addProjectPopup, backdrop);
         displayProjects(user,projectContainer,projectTemplate);
     });
@@ -146,6 +181,7 @@ function setupPopupButtons(){
 
         
         CurrentUser.projectWithTitle(editProjectPopup.dataset.title).title = title;
+        localStorage.setItem('USER', JSON.stringify(CurrentUser));
         hidePopup(editProjectPopup, backdrop);
         displayProjects(user,projectContainer,projectTemplate);
     });
@@ -192,6 +228,7 @@ function setupPopupButtons(){
         hidePopup(editTodoPopup, backdrop);
 
         currentProject.sortTodos();
+        localStorage.setItem('USER', JSON.stringify(CurrentUser));
         displayTodos(currentProject,todoContainer,todoTemplate);
     });
     
