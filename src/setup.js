@@ -71,6 +71,7 @@ console.log(user);
 console.log(JSON.parse(JSON.stringify(user)));
 
 setCurrentUser(user);
+setCurrentProject(CurrentUser.projectArr[0]);
 
 
 
@@ -86,7 +87,7 @@ export function setup(){
     setupAddButtons();
     setupPopupButtons();
 
-    setCurrentProject(CurrentUser.projectWithTitle("Get A Job"));
+
 }
 
 

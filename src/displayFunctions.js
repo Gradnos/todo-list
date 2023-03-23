@@ -7,6 +7,8 @@ let projectTemplate = document.querySelector(".project-template");
 let editProjectPopup = document.querySelector(".edit-project-popup");
 let editTodoPopup = document.querySelector(".edit-todo-popup");
 
+let confirmDeletePopup = document.querySelector(".confirm-delete-popup");
+
 export function displayProjects(user, ProjectContainer, projectTemplate){
     let projectArr = user.projectArr;
     ProjectContainer.innerHTML = "";
@@ -18,15 +20,28 @@ export function displayProjects(user, ProjectContainer, projectTemplate){
         let deleteButton = projectClone.querySelector(".delete");
 
         deleteButton.addEventListener("click", (e) =>{
-            CurrentUser.removeProjectByTitle(project.title);
-            if(currentProject.title === project.title) setCurrentProject(user.projectArr[0]);
+
+            confirmDeletePopup.querySelector("h3").innerText = `Delete >>${project.title}<< ?`;
+            displayPopup(confirmDeletePopup,backdrop);
+            let cancelButton = confirmDeletePopup.querySelector(".cancel");
+            let confirmButton = confirmDeletePopup.querySelector(".confirm");
+        
+            cancelButton.addEventListener("click", ()=>{
+                hidePopup(confirmDeletePopup,backdrop);
+            });
+        
+            confirmButton.addEventListener("click", ()=>{
+                hidePopup(confirmDeletePopup,backdrop);
+
+                CurrentUser.removeProjectByTitle(project.title);
+                if(currentProject.title === project.title) setCurrentProject(user.projectArr[0]);
+                console.log(JSON.stringify(CurrentUser));
+                localStorage.setItem('USER', JSON.stringify(CurrentUser));
+                displayProjects(user, ProjectContainer, projectTemplate);
+                SelectedProjectChangeStyle(currentProject);
+            });
 
 
-
-            console.log(JSON.stringify(CurrentUser));
-            localStorage.setItem('USER', JSON.stringify(CurrentUser));
-            displayProjects(user, ProjectContainer, projectTemplate);
-            SelectedProjectChangeStyle(currentProject);
             e.stopPropagation();
 
 
@@ -79,11 +94,26 @@ export function displayTodos(project, todoContainer, todoTemplate){
         let deleteButton = todoClone.querySelector(".delete");
 
         deleteButton.addEventListener("click", (e) =>{
-            currentProject.removeTodoByTitle(todo.title);
-            localStorage.setItem('USER', JSON.stringify(CurrentUser));
-            displayTodos(project, todoContainer, todoTemplate);
 
-            console.log(project);
+            confirmDeletePopup.querySelector("h3").innerText = `Delete >>${todo.title}<< ?`;
+            displayPopup(confirmDeletePopup,backdrop);
+            let cancelButton = confirmDeletePopup.querySelector(".cancel");
+            let confirmButton = confirmDeletePopup.querySelector(".confirm");
+        
+            cancelButton.addEventListener("click", ()=>{
+                hidePopup(confirmDeletePopup,backdrop);
+            });
+        
+            confirmButton.addEventListener("click", ()=>{
+                hidePopup(confirmDeletePopup,backdrop);
+                console.log("asdsadsadasd");
+                currentProject.removeTodoByTitle(todo.title);
+                localStorage.setItem('USER', JSON.stringify(CurrentUser));
+                displayTodos(project, todoContainer, todoTemplate);
+            });
+
+            e.stopPropagation();
+
         });
 
         let editButton = todoClone.querySelector(".edit");
