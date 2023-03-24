@@ -37,9 +37,9 @@ export function setCurrentProject(project){
 };
 
 
+
 let retrievedUser = localStorage.getItem('USER');
 let userJson = JSON.parse(retrievedUser);
-console.log('USER: ', );
 let user
 
 if(userJson === null){
@@ -65,10 +65,6 @@ if(userJson === null){
 
 
 
-console.log(user);
-
-
-console.log(JSON.parse(JSON.stringify(user)));
 
 setCurrentUser(user);
 setCurrentProject(CurrentUser.projectArr[0]);

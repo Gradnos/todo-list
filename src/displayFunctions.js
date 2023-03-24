@@ -1,8 +1,8 @@
 import { currentProject, CurrentUser, setCurrentProject, setCurrentUser, backdrop } from "./setup";
 
 let projectContainer = document.querySelector(".project-container");
-let projectTemplate = document.querySelector(".project-template");
 
+let todoContainer = document.querySelector(".todo-container");
 
 let editProjectPopup = document.querySelector(".edit-project-popup");
 let editTodoPopup = document.querySelector(".edit-todo-popup");
@@ -20,6 +20,9 @@ export function displayProjects(user, ProjectContainer, projectTemplate){
         let deleteButton = projectClone.querySelector(".delete");
 
         deleteButton.addEventListener("click", (e) =>{
+
+            console.log("project");
+
 
             confirmDeletePopup.querySelector("h3").innerText = `Delete >>${project.title}<< ?`;
             displayPopup(confirmDeletePopup,backdrop);
@@ -84,9 +87,11 @@ export function displayTodos(project, todoContainer, todoTemplate){
         let todoCheckbox = todoClone.querySelector(".todo-completed");
 
 
+
+
         todoClone.classList.remove("nodisplay", "todo-template")
         todoClone.querySelector(".todo-title").innerText = todo.title;
-        todoClone.querySelector(".todo-description").innerText = todo.description;
+        todoClone.querySelector(".todo-description").innerText = shorterString(todo.description, 40);;
         todoClone.querySelector(".todo-dueDate").innerText = todo.dueDate;
         todoCheckbox.checked = todo.completed;
 
@@ -97,10 +102,18 @@ export function displayTodos(project, todoContainer, todoTemplate){
 
         deleteButton.addEventListener("click", (e) =>{
 
+            console.log("todo");
+
             confirmDeletePopup.querySelector("h3").innerText = `Delete >>${todo.title}<< ?`;
             displayPopup(confirmDeletePopup,backdrop);
-            let cancelButton = confirmDeletePopup.querySelector(".cancel");
-            let confirmButton = confirmDeletePopup.querySelector(".confirm");
+            let oldCancelButton = confirmDeletePopup.querySelector(".cancel");
+            let oldConfirmButton = confirmDeletePopup.querySelector(".confirm");
+
+            let cancelButton = oldCancelButton.cloneNode(true);
+            oldCancelButton.parentNode.replaceChild(cancelButton, oldCancelButton);
+
+            let confirmButton = oldConfirmButton.cloneNode(true);
+            oldConfirmButton.parentNode.replaceChild(confirmButton, oldConfirmButton);
         
             cancelButton.addEventListener("click", ()=>{
                 hidePopup(confirmDeletePopup,backdrop);
@@ -108,7 +121,6 @@ export function displayTodos(project, todoContainer, todoTemplate){
         
             confirmButton.addEventListener("click", ()=>{
                 hidePopup(confirmDeletePopup,backdrop);
-                console.log("asdsadsadasd");
                 currentProject.removeTodoByTitle(todo.title);
                 localStorage.setItem('USER', JSON.stringify(CurrentUser));
                 displayTodos(project, todoContainer, todoTemplate);
@@ -142,6 +154,16 @@ export function displayTodos(project, todoContainer, todoTemplate){
             e.stopPropagation();
         });
 
+        todoClone.addEventListener("click", (e)=>{
+            if(todoClone.classList.contains("extended")){
+                SelectedTodoExtend(false);
+                todoClone.querySelector(".todo-description").innerText = shorterString(todo.description, 40);
+            }else{
+                SelectedTodoExtend(todo);
+                todoClone.querySelector(".todo-description").innerText = todo.description;
+            }
+        });
+
 
         if(todo.completed) todoClone.classList.add("completed");
         else todoClone.classList.remove("completed");
@@ -169,7 +191,26 @@ export function SelectedProjectChangeStyle(project){
     });
 }
 
+function SelectedTodoExtend(todo){
+    let title = todo.title;
 
+    if(todo === false) title = ""; 
+
+    let todoElements =  todoContainer.querySelectorAll(".todo-div");
+    todoElements.forEach(todoElement => {
+        let titleElement = todoElement.querySelector(".todo-title");
+        let todoElementTitle = null;
+        if(titleElement !== null) todoElementTitle = titleElement.innerText;
+
+        if(todoElementTitle === title){
+            todoElement.classList.add("extended");
+        } else{
+            todoElement.classList.remove("extended");
+            let todoTitle = todoElement.querySelector(".todo-title").innerText
+            todoElement.querySelector(".todo-description").innerText = shorterString(currentProject.todoWithTitle(todoTitle).description, 40);
+        }
+    });
+}
 
 
 export function displayPopup(popupElement, backdrop){
@@ -188,4 +229,10 @@ export function hidePopup(popupElement, backdrop){
  
 export function displayError(popup, errorClass, errorText){
     popup.querySelector(errorClass).innerText=errorText;
+}
+
+function shorterString(string, length){
+    if (string.length < length + 1) return string; 
+    let shorter = string.slice(0, length);
+    return shorter + "...";
 }

@@ -105,7 +105,6 @@
     }
 
 
-
     svg{
         height: 1.7rem;
         width: auto;
@@ -156,6 +155,25 @@
         padding: 10px;
         width: 90%;
         border-radius: 10px;
+    }
+
+    .todo-div .check-title{
+        align-items: center; 
+        display: flex;
+        gap:20px;
+    }
+
+    .todo-div.extended,
+    .todo-div.extended .right-side{
+        flex-direction: column;
+        height: auto;
+        gap:0px;
+    }
+
+    .todo-div.extended .todo-description{
+        inline-size: 700px;
+        overflow-wrap: break-word;
+        hyphens: manual;
     }
 
     .todo-div.--r{
