@@ -137,6 +137,7 @@ export function displayTodos(project, todoContainer, todoTemplate){
             editTodoPopup.querySelector(".ipt-title").placeholder = todo.title;
 
             editTodoPopup.querySelector(".ipt-description").value = todo.description;
+
             editTodoPopup.querySelector(".ipt-dueDate").value = todo.dueDate;
             editTodoPopup.querySelector(".ipt-priority").value = todo.priority; 
 

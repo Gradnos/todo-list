@@ -170,6 +170,10 @@
         gap:0px;
     }
 
+    p{
+        text-align: center;
+    }
+
     .todo-div.extended .todo-description{
         inline-size: 700px;
         overflow-wrap: break-word;
@@ -222,7 +226,6 @@
     .todo-div .todo-dueDate{
         text-align: center;
         margin-right: 20px;
-        width: 110px;
     }
 
     button{
