@@ -1,1 +1,179 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Todo List</title><script defer="defer" src="runtime.bundle.js"></script><script defer="defer" src="index.bundle.js"></script><script defer="defer" src="setup.bundle.js"></script><script defer="defer" src="displayFunctions.bundle.js"></script><script defer="defer" src="todoObjects.bundle.js"></script></head><body><header><h1>TO DO LIST</h1></header><div class="content"><div class="projects"><h2>Projects</h2><div class="project-container"><div class="project-div nodisplay project-template"><span class="project-title">title</span> <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>pencil-circle</title><path d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M15.1,7.07C15.24,7.07 15.38,7.12 15.5,7.23L16.77,8.5C17,8.72 17,9.07 16.77,9.28L15.77,10.28L13.72,8.23L14.72,7.23C14.82,7.12 14.96,7.07 15.1,7.07M13.13,8.81L15.19,10.87L9.13,16.93H7.07V14.87L13.13,8.81Z"/></svg></button> <button class="delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>delete-circle</title><path d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M17,7H14.5L13.5,6H10.5L9.5,7H7V9H17V7M9,18H15A1,1 0 0,0 16,17V10H8V17A1,1 0 0,0 9,18Z"/></svg></button></div></div><button class="add-project add-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus-circle</title><path d="M17,13H13V17H11V13H7V11H11V7H13V11H17M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/></svg></button></div><div class="todos"><h2>Todos</h2><div class="todo-container"><div class="todo-div nodisplay todo-template"><div class="right-side"><input type="checkbox" class="done todo-completed" value="done"> <span class="todo-title">Very good</span> <span class="todo-description">bing bong bing bong ding dong</span></div><div class="left-side"><span class="todo-dueDate">11/12/2023</span> <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>pencil-circle</title><path d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M15.1,7.07C15.24,7.07 15.38,7.12 15.5,7.23L16.77,8.5C17,8.72 17,9.07 16.77,9.28L15.77,10.28L13.72,8.23L14.72,7.23C14.82,7.12 14.96,7.07 15.1,7.07M13.13,8.81L15.19,10.87L9.13,16.93H7.07V14.87L13.13,8.81Z"/></svg></button> <button class="delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>delete-circle</title><path d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M17,7H14.5L13.5,6H10.5L9.5,7H7V9H17V7M9,18H15A1,1 0 0,0 16,17V10H8V17A1,1 0 0,0 9,18Z"/></svg></button></div></div></div><button class="add-todo add-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus-circle</title><path d="M17,13H13V17H11V13H7V11H11V7H13V11H17M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/></svg></button></div></div><footer><div>Made By <a href="https://github.com/Gradnos" target="_blank">GRADNOS</a> For <a href="https://www.theodinproject.com/" target="_blank">TheOdinProject</a></div></footer><div class="project-popup popup"><h3>Add Project</h3><div class="input-wrapper"><label for="" class="title-label">Title</label> <input class="ipt-title" maxlength="30"> <small class="title-error error"></small></div><div class="button-container"><button class="confirm">Confirm</button> <button class="cancel">Cancel</button></div></div><div class="edit-project-popup popup"><h3>Edit Project</h3><div class="input-wrapper"><label for="" class="title-label">Title</label> <input class="ipt-title" maxlength="30"> <small class="title-error error"></small></div><div class="button-container"><button class="confirm">Confirm</button> <button class="cancel">Cancel</button></div></div><div class="todo-popup popup"><h3>Add Todo</h3><div class="input-wrapper"><label for="" class="title-label">Title</label> <input class="ipt-title" maxlength="30"> <small class="title-error error"></small></div><div class="input-wrapper"><label for="">Description</label> <input class="ipt-description"> <small class="error"></small></div><div class="input-wrapper"><label for="">DueDate</label> <input class="ipt-dueDate" type="date"> <small class="error"></small></div><div class="input-wrapper"><label for="">Priority</label> <select name="priority" class="ipt-priority"><option value="0">Super Important</option><option value="1">Important</option><option value="2">Not Important</option></select> <small class="error"></small></div><div class="button-container"><button class="confirm">Confirm</button> <button class="cancel">Cancel</button></div></div><div class="edit-todo-popup popup"><h3>Edit Todo</h3><div class="input-wrapper"><label for="" class="title-label">Title</label> <input class="ipt-title" maxlength="30"> <small class="title-error error"></small></div><div class="input-wrapper"><label for="">Description</label> <input class="ipt-description"> <small class="error"></small></div><div class="input-wrapper"><label for="">DueDate</label> <input class="ipt-dueDate" type="date"> <small class="error"></small></div><div class="input-wrapper"><label for="">Priority</label> <select name="priority" class="ipt-priority"><option value="0">Super Important</option><option value="1">Important</option><option value="2">Not Important</option></select> <small class="error"></small></div><div class="button-container"><button class="confirm">Confirm</button> <button class="cancel">Cancel</button></div></div><div class="backdrop"></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+<script defer src="runtime.bundle.js"></script><script defer src="index.bundle.js"></script><script defer src="setup.bundle.js"></script><script defer src="displayFunctions.bundle.js"></script><script defer src="todoObjects.bundle.js"></script></head>
+<body>
+   
+    <header>
+        <h1>TO DO LIST</h1>
+    </header>
+    <div class="content">
+        <div class="projects">
+                <h2>Projects</h2>
+            <div class="project-container">
+                <div class="project-div nodisplay project-template">
+                    <span class="project-title">title</span>
+                    <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>pencil-circle</title><path d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M15.1,7.07C15.24,7.07 15.38,7.12 15.5,7.23L16.77,8.5C17,8.72 17,9.07 16.77,9.28L15.77,10.28L13.72,8.23L14.72,7.23C14.82,7.12 14.96,7.07 15.1,7.07M13.13,8.81L15.19,10.87L9.13,16.93H7.07V14.87L13.13,8.81Z" /></svg></button>
+                    <button class="delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>delete-circle</title><path d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M17,7H14.5L13.5,6H10.5L9.5,7H7V9H17V7M9,18H15A1,1 0 0,0 16,17V10H8V17A1,1 0 0,0 9,18Z" /></svg></button>
+                </div>
+            </div>
+            <button class="add-project add-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus-circle</title><path d="M17,13H13V17H11V13H7V11H11V7H13V11H17M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg></button>
+        </div>
+        <div class="todos">
+            <h2>Todos</h2>
+            <div class="todo-container">
+                <div class="todo-div nodisplay todo-template">
+                    <div class="right-side">
+                        <input type="checkbox" class="done todo-completed" value="done">
+                        <span class="todo-title">Very good</span>
+                        <span class="todo-description">bing bong bing bong ding dong</span>
+                    </div>
+                    <div class="left-side">
+                    <span class="todo-dueDate">11/12/2023</span>
+                        <button class="edit"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>pencil-circle</title><path d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M15.1,7.07C15.24,7.07 15.38,7.12 15.5,7.23L16.77,8.5C17,8.72 17,9.07 16.77,9.28L15.77,10.28L13.72,8.23L14.72,7.23C14.82,7.12 14.96,7.07 15.1,7.07M13.13,8.81L15.19,10.87L9.13,16.93H7.07V14.87L13.13,8.81Z" /></svg></button>
+                        <button class="delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>delete-circle</title><path d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M17,7H14.5L13.5,6H10.5L9.5,7H7V9H17V7M9,18H15A1,1 0 0,0 16,17V10H8V17A1,1 0 0,0 9,18Z" /></svg></button>
+                    </div>
+                </div>
+            </div>
+            <button class="add-todo add-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus-circle</title><path d="M17,13H13V17H11V13H7V11H11V7H13V11H17M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg></button>
+        </div>
+    </div>
+    <footer>
+        <div>Made By <a href="https://github.com/Gradnos" target="_blank">GRADNOS</a> For <a href="https://www.theodinproject.com/" target="_blank">TheOdinProject</a></div>
+    </footer>
+
+
+
+
+
+    <div class="project-popup popup">
+        <h3>Add Project</h3>
+        <div class="input-wrapper">
+            <label for="" class="title-label"> Title</label>
+            <input class="ipt-title" type="text" maxlength="30">
+            <small class="title-error error"></small>
+        </div>
+        
+        <div class="button-container">
+            <button class="confirm">Confirm</button>
+            <button class="cancel">Cancel</button>
+        </div>
+    </div>
+
+
+    <div class="edit-project-popup popup">
+        <h3>Edit Project</h3>
+        <div class="input-wrapper">
+            <label for="" class="title-label"> Title</label>
+            <input class="ipt-title" type="text" maxlength="30">
+            <small class="title-error error"></small>
+        </div>
+        
+        <div class="button-container">
+            <button class="confirm">Confirm</button>
+            <button class="cancel">Cancel</button>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="todo-popup popup">
+        <h3>Add Todo</h3>
+
+        <div class="input-wrapper">
+            <label for="" class="title-label">Title</label>
+            <input class="ipt-title" type="text"  maxlength="30">
+            <small class="title-error error"></small>
+        </div>
+        
+        <div class="input-wrapper">
+            <label for=""> Description</label>
+            <input class="ipt-description" type="text">
+            <small class="error"></small>
+        </div>
+
+        <div class="input-wrapper">
+            <label for=""> DueDate</label>
+            <input class="ipt-dueDate" type="date">
+            <small class="error"></small>
+        </div>
+
+
+        <div class="input-wrapper">
+            <label for=""> Priority</label>
+            <select name="priority" class="ipt-priority">
+                <option value="0">Super Important</option>
+                <option value="1">Important</option>
+                <option value="2">Not Important</option>
+              </select>
+            <small class="error"></small>
+        </div>
+
+
+        <div class="button-container">
+            <button class="confirm">Confirm</button>
+            <button class="cancel">Cancel</button>
+        </div>
+    </div>
+    
+
+
+    <div class="edit-todo-popup popup">
+        <h3>Edit Todo</h3>
+
+        <div class="input-wrapper">
+            <label for="" class="title-label">Title</label>
+            <input class="ipt-title" type="text"  maxlength="30">
+            <small class="title-error error"></small>
+        </div>
+        
+        <div class="input-wrapper">
+            <label for=""> Description</label>
+            <input class="ipt-description" type="text">
+            <small class="error"></small>
+        </div>
+
+        <div class="input-wrapper">
+            <label for=""> DueDate</label>
+            <input class="ipt-dueDate" type="date">
+            <small class="error"></small>
+        </div>
+
+
+        <div class="input-wrapper">
+            <label for=""> Priority</label>
+            <select name="priority" class="ipt-priority">
+                <option value="0">Super Important</option>
+                <option value="1">Important</option>
+                <option value="2">Not Important</option>
+              </select>
+            <small class="error"></small>
+        </div>
+
+
+        <div class="button-container">
+            <button class="confirm">Confirm</button>
+            <button class="cancel">Cancel</button>
+        </div>
+    </div>
+
+    <div class="confirm-delete-popup popup">
+        <h3>Delete title?</h3>
+        <div class="button-container">
+            <button class="confirm">Confirm</button>
+            <button class="cancel">Cancel</button>
+        </div>
+    </div>
+
+
+
+    <div class="backdrop"></div>
+</body>
+</html>

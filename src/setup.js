@@ -155,6 +155,7 @@ function setupPopupButtons(){
         displayError(addProjectPopup, ".title-error", "");
 
         CurrentUser.createProject(title);
+        setCurrentProject(CurrentUser.projectWithTitle(title));
         localStorage.setItem('USER', JSON.stringify(CurrentUser));
         hidePopup(addProjectPopup, backdrop);
         displayProjects(user,projectContainer,projectTemplate);

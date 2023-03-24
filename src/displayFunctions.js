@@ -34,11 +34,11 @@ export function displayProjects(user, ProjectContainer, projectTemplate){
                 hidePopup(confirmDeletePopup,backdrop);
 
                 CurrentUser.removeProjectByTitle(project.title);
-                if(currentProject.title === project.title) setCurrentProject(user.projectArr[0]);
+                if(currentProject.title === project.title) setCurrentProject(user.projectArr[user.projectArr.length-1]);
                 console.log(JSON.stringify(CurrentUser));
                 localStorage.setItem('USER', JSON.stringify(CurrentUser));
                 displayProjects(user, ProjectContainer, projectTemplate);
-                SelectedProjectChangeStyle(currentProject);
+                if(user.projectArr.length > 0) SelectedProjectChangeStyle(currentProject);
             });
 
 
@@ -67,16 +67,18 @@ export function displayProjects(user, ProjectContainer, projectTemplate){
         ProjectContainer.appendChild(projectClone);
     });
 
-    SelectedProjectChangeStyle(currentProject);
+    if(user.projectArr.length > 0) SelectedProjectChangeStyle(currentProject);
 }
 
 export function displayTodos(project, todoContainer, todoTemplate){
+    
+    todoContainer.innerHTML = "";
+    if(project === undefined) return;
 
     let priorityColors = ["--r", "--b", "--g"];
 
 
     let todoArr = project.todoArr;
-    todoContainer.innerHTML = "";
     todoArr.forEach(todo => {
         let todoClone = todoTemplate.cloneNode(true);
         let todoCheckbox = todoClone.querySelector(".todo-completed");
@@ -149,6 +151,9 @@ export function displayTodos(project, todoContainer, todoTemplate){
 }
 
 export function SelectedProjectChangeStyle(project){
+
+    if (!project) return console.log("error");
+
     let title = project.title;
     let projectElements =  projectContainer.querySelectorAll(".project-div");
     projectElements.forEach(projectElement => {
